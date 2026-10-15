@@ -1,0 +1,1 @@
+import{m as o}from"./index-1oeUVfEW.js";import{e as a}from"./index-DQfwGVdh.js";const r=o("cart",{state:()=>({count:0}),actions:{async fetchCount(){try{const t=await a();this.count=t.totalCount||0}catch{this.count=0}}}});export{r as u};
