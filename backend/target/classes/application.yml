@@ -1,0 +1,76 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+
+spring:
+  application:
+    name: ycyx-shop
+  # 数据库连接
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/ycyx_shop?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true&rewriteBatchedStatements=true
+    username: root
+    password: 123456
+  # Redis 连接
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    database: 0
+    timeout: 5000ms
+    lettuce:
+      pool:
+        max-active: 8
+        max-idle: 8
+        min-idle: 0
+  # 文件上传大小限制
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: Asia/Shanghai
+
+mybatis-plus:
+  mapper-locations: classpath*:mapper/*.xml
+  type-aliases-package: com.ycyx.shop.entity
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+  global-config:
+    db-config:
+      id-type: auto
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+
+# 自定义业务配置
+ycyx:
+  jwt:
+    # 生产环境请替换为随机密钥，长度需 >= 32 字节
+    secret: ycyx-shop-jwt-secret-key-please-change-in-prod-2026
+    # 访问令牌过期时间（毫秒），默认 2 小时
+    expire: 7200000
+  upload:
+    # 图片上传目录（相对项目运行目录，物理落盘目录）
+    path: upload/
+    # 对外访问前缀（最终访问地址 /api/upload/xxx.jpg）
+    url-prefix: /upload/
+
+# 日志配置
+logging:
+  level:
+    com.ycyx.shop: debug
+    org.springframework.security: info
+
+# Springdoc / Knife4j
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
+knife4j:
+  enable: true
+  setting:
+    language: zh_cn
