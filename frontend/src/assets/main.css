@@ -1,0 +1,61 @@
+:root {
+  --primary: #e65d36;
+  --primary-light: #ff7a52;
+  --success: #67c23a;
+  --text-main: #303133;
+  --text-secondary: #909399;
+  --bg: #f7f7f7;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+  color: var(--text-main);
+  background: var(--bg);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.page-title {
+  font-size: 22px;
+  font-weight: 600;
+  margin: 20px 0;
+}
+
+.price {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.price::before {
+  content: '¥';
+  font-size: 0.8em;
+}
+
+/* 通用按钮颜色 */
+.el-button--primary {
+  --el-button-bg-color: var(--primary);
+  --el-button-border-color: var(--primary);
+  --el-button-hover-bg-color: var(--primary-light);
+  --el-button-hover-border-color: var(--primary-light);
+}
+
+.text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
